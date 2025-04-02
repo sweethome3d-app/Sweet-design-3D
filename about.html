@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Explore the psychology of space and how geometric elements in interior design influence mood and behavior. Discover innovative 3D and 5D design concepts for your sweet home." name="description"/>
+<meta content="sweet home, 3d design, 5d design, home 3d, interior design, geometric elements in interior design, interior design and mood influence, interior design and human behavior, space planning and emotional response" name="keywords"/>
+<title>Sweet_design_3D: Psychology of Space in Interior Design</title>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&amp;family=Roboto:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+        --primary-color: #FFFFFF;
+        --secondary-color: #F5E6D3;
+        --accent-color: #E6E6FA;
+        --pale-pink: #FADADD;
+        --mint-green: #98FF98;
+        --sky-blue: #87CEEB;
+    }
+    
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        letter-spacing: 0.5px;
+        color: #333;
+        background-color: var(--primary-color);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Roboto', 'Open Sans', sans-serif;
+        line-height: 1.2;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 5%;
+    }
+    
+    .btn {
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .form-control {
+        border: none;
+        border-bottom: 1px solid #ccc;
+        border-radius: 0;
+        padding: 10px 0;
+    }
+    
+    .geometric-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.1;
+        pointer-events: none;
+    }
+    
+    .geometric-bg::before,
+    .geometric-bg::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+    }
+    
+    .geometric-bg::before {
+        width: 300px;
+        height: 300px;
+        background-color: var(--pale-pink);
+        top: -150px;
+        left: -150px;
+    }
+    
+    .geometric-bg::after {
+        width: 200px;
+        height: 200px;
+        background-color: var(--mint-green);
+        bottom: -100px;
+        right: -100px;
+    }
+    
+    @media (max-width: 768px) {
+        body {
+            font-size: 14px;
+        }
+        
+        h1 {
+            font-size: 28px;
+        }
+        
+        .container {
+            padding: 0 3%;
+        }
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Lazy loading images
+        if ('loading' in HTMLImageElement.prototype) {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.src = img.dataset.src;
+            });
+        } else {
+            // Fallback for browsers that don't support lazy loading
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js';
+            script.async = true;
+            document.body.appendChild(script);
+            script.onload = function() {
+                const observer = lozad();
+                observer.observe();
+            }
+        }
+    });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (!localStorage.getItem('cookieConsent')) {
+        const cookiePopup = document.createElement('div');
+        cookiePopup.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #F5E6D3;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            max-width: 90%;
+            width: 400px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        `;
+        
+        cookiePopup.innerHTML = `
+            <h3 style="color: #333; font-size: 20px; margin-bottom: 10px;">Cookie Consent</h3>
+            <p style="color: #555; font-size: 16px; line-height: 1.5; margin-bottom: 15px;">
+                We use cookies to enhance your experience and analyze our traffic. By continuing to use our website, you consent to our use of cookies. Learn more about how we use cookies in our Privacy Policy.
+            </p>
+            <div style="display: flex; justify-content: space-between;">
+                <button id="acceptCookies" style="background-color: #98FF98; color: #333; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">Accept</button>
+                <button id="declineCookies" style="background-color: #FADADD; color: #333; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">Decline</button>
+            </div>
+        `;
+        
+        document.body.appendChild(cookiePopup);
+        
+        document.getElementById('acceptCookies').addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            cookiePopup.style.display = 'none';
+        });
+        
+        document.getElementById('declineCookies').addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'declined');
+            cookiePopup.style.display = 'none';
+        });
+    }
+});
+</script>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+<div style="flex: 1;">
+<header>
+<header class="navbar navbar-expand-lg navbar-light bg-white py-3">
+<div class="container">
+<a class="navbar-brand" href="/" style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 24px; color: #333; letter-spacing: 1px;">Sweet_design_3D</a>
+<button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+<ul class="navbar-nav">
+<li class="nav-item">
+<a class="nav-link" href="posts.html" style="font-family: 'Roboto', 'Open Sans', sans-serif; font-size: 18px; color: #333; letter-spacing: 0.5px; margin: 0 15px;">Posts</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="about.html" style="font-family: 'Roboto', 'Open Sans', sans-serif; font-size: 18px; color: #333; letter-spacing: 0.5px; margin: 0 15px;">About</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="contacts.html" style="font-family: 'Roboto', 'Open Sans', sans-serif; font-size: 18px; color: #333; letter-spacing: 0.5px; margin: 0 15px;">Contacts</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="privacy_policy.html" style="font-family: 'Roboto', 'Open Sans', sans-serif; font-size: 18px; color: #333; letter-spacing: 0.5px; margin: 0 15px;">Privacy Policy</a>
+</li>
+</ul>
+</div>
+</div>
+</header>
+<style>
+  .navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .navbar-brand:hover,
+  .nav-link:hover {
+    color: #87CEEB !important;
+    transition: color 0.3s ease;
+  }
+  
+  @media (max-width: 991px) {
+    .navbar-nav {
+      text-align: center;
+    }
+    
+    .nav-link {
+      margin: 10px 0 !important;
+    }
+  }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var navbarToggler = document.querySelector('.navbar-toggler');
+  var navbarCollapse = document.querySelector('.navbar-collapse');
+
+  navbarToggler.addEventListener('click', function() {
+    navbarCollapse.classList.toggle('show');
+  });
+});
+</script>
+</header>
+<div class="container my-5">
+<div class="row">
+<div class="col-lg-8 mx-auto">
+<h1 class="text-center mb-4" style="color: #87CEEB; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 36px;">About Sweet_design_3D</h1>
+<div class="bg-light p-4 rounded" style="background-color: #F5E6D3;">
+<p class="lead" style="font-family: 'Roboto', 'Open Sans', sans-serif; font-size: 18px; line-height: 1.8; letter-spacing: 0.5px;">
+                    Welcome to Sweet_design_3D, your gateway to understanding the fascinating world of interior design and its profoundfound impact on human psychology and behavior.
+                </p>
+</div>
+<h2 class="mt-5 mb-3" style="color: #FADADD; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 28px;">Our Mission</h2>
+<p style="font-family: 'Roboto', 'Open Sans', sans-serif; font-size: 16px; line-height: 1.6; letter-spacing: 0.5px;">
+                At Sweet_design_3D, we delve deep into the Psychology of Space, exploring how people perceive geometric elements in interior design and how these perceptions influence mood and behavior. Our goal is to bridge the gap between aesthetics and well-being, creating spaces that not only look beautiful but also foster positive emotions and enhance human experiences.
+            </p>
+<h2 class="mt-5 mb-3" style="color: #98FF98; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 28px;">What We Offer</h2>
+<ul style="font-family: 'Roboto', 'Open Sans', sans-serif; font-size: 16px; line-height: 1.6; letter-spacing: 0.5px;">
+<li>In-depth articles on the psychological impact of interior design</li>
+<li>3D and 5D design concepts for creating emotionally resonant spaces</li>
+<li>Expert insights on space planning and its effect on human behavior</li>
+<li>Practical tips for incorporating mood-enhancing geometric elements in your home</li>
+<li>Case studies showcasing the transformation of interiors and their inhabitants</li>
+</ul>
+<h2 class="mt-5 mb-3" style="color: #87CEEB; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 28px;">Meet Our Team</h2>
+<div class="row">
+<div class="col-md-6 mb-4">
+<div class="card h-100">
+<img alt="Portrait of Sarah Johnson, an interior designer with short dark hair and glasses, smiling warmly at the camera. She is wearing a stylish blazer and standing in front of a modern, minimalist interior." class="card-img-top" src="images/image_0_about.png"/>
+<div class="card-body">
+<h5 class="card-title" style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 20px;">Sarah Johnson</h5>
+<p class="card-text" style="font-family: 'Roboto', 'Open Sans', sans-serif; font-size: 14px;">Lead Interior Designer &amp; Psychologist</p>
+</div>
+</div>
+</div>
+<div class="col-md-6 mb-4">
+<div class="card h-100">
+<img alt="Portrait of Michael Chen, a 3D design specialist with medium-length black hair, wearing a casual button-up shirt. He is shown working on a 3D model of an interior space on a large computer screen." class="card-img-top" src="images/image_1_about.png"/>
+<div class="card-body">
+<h5 class="card-title" style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 20px;">Michael Chen</h5>
+<p class="card-text" style="font-family: 'Roboto', 'Open Sans', sans-serif; font-size: 14px;">3D Design Specialist</p>
+</div>
+</div>
+</div>
+</div>
+<h2 class="mt-5 mb-3" style="color: #FADADD; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 28px;">Our Apapproachach</h2>
+<p style="font-family: 'Roboto', 'Open Sans', sans-serif; font-size: 16px; line-height: 1.6; letter-spacing: 0.5px;">
+                We believe that every line, shape, and curve in an interior space has the power to evoke emotions and influence behavior. Our unique apmethodach combines:
+            </p>
+<ul style="font-family: 'Roboto', 'Open Sans', sans-serif; font-size: 16px; line-height: 1.6; letter-spacing: 0.5px;">
+<li>Scientific research on environmental psychology</li>
+<li>Cutting-edge 3D and 5D design technologies</li>
+<li>Principles of color theory and geometric harmony</li>
+<li>Real-world case studies and user feedback</li>
+</ul>
+<div class="bg-light p-4 rounded mt-5" style="background-color: #E6E6FA;">
+<h2 class="mb-3" style="color: #87CEEB; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 24px;">Join Us on This Journey</h2>
+<p style="font-family: 'Roboto', 'Open Sans', sans-serif; font-size: 16px; line-height: 1.6; letter-spacing: 0.5px;">
+                    Whether you're a homeowner looking to create a more harmonious living space, an interior designer seeking to deepen your understanding of design psychology, or simply someone fascinated by the interplay between space and human experience, Sweet_design_3D is here to inspire, educate, and transform.
+                </p>
+<p class="mb-0" style="font-family: 'Roboto', 'Open Sans', sans-serif; font-size: 16px; line-height: 1.6; letter-spacing: 0.5px;">
+                    Explore our blog, engage with our community, and discover how the psychology of space can revolutionize your apapproachach to interior design and living.
+                </p>
+</div>
+</div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add subtle fade-in effect to sections
+    const sections = document.querySelectorAll('h2, .card, .bg-light');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+        section.style.opacity = 0;
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+        observer.observe(section);
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+});
+</script>
+</div>
+<footer style="width: 100%; z-index: 1000;">
+<footer class="bg-light py-4">
+<div class="container">
+<div class="row">
+<div class="col-md-4 mb-3 mb-md-0">
+<h5 class="text-muted mb-3">Sweet_design_3D</h5>
+<p class="text-muted small">Exploring the Psychology of Space and how geometric elements in interior design influence mood and behavior.</p>
+</div>
+<div class="col-md-4 mb-3 mb-md-0">
+<h5 class="text-muted mb-3">Quick Links</h5>
+<ul class="list-unstyled">
+<li><a class="text-muted" href="posts.html">Posts</a></li>
+<li><a class="text-muted" href="about.html">About</a></li>
+<li><a class="text-muted" href="contacts.html">Contacts</a></li>
+<li><a class="text-muted" href="privacy_policy.html">Privacy Policy</a></li>
+</ul>
+</div>
+<div class="col-md-4">
+<h5 class="text-muted mb-3">Connect With Us</h5>
+<div class="d-flex">
+<a class="text-muted me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+<a class="text-muted me-3" href="#"><i class="fab fa-twitter"></i></a>
+<a class="text-muted me-3" href="#"><i class="fab fa-instagram"></i></a>
+<a class="text-muted" href="#"><i class="fab fa-linkedin-in"></i></a>
+</div>
+</div>
+</div>
+<hr class="my-4"/>
+<div class="row">
+<div class="col-md-6 text-center text-md-start">
+<p class="text-muted small mb-0">© 2024 Sweet_design_3D. All rights reserved.</p>
+</div>
+<div class="col-md-6 text-center text-md-end">
+<p class="text-muted small mb-0">
+<a class="text-muted" href="mailto:info@sweetdesign3d.com">info@sweetdesign3d.com</a> | 
+                    <a class="text-muted" href="tel:+12345678900">+1 (234) 567-8900</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script crossorigin="anonymous" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</footer>
+</body>
+</html>
