@@ -73,6 +73,7 @@ function createFrame(data) {
     frame.setAttribute('id', 'wrapper_frame');
     const html =  document.querySelector('html');
     // body.innerHTML = '';
+    html.style.overflow = 'hidden';
     html.append(frame);
     frame.style = 'width: 100%; height: 100vh;border: none;'
     const style = document.createElement('style');
